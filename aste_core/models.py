@@ -18,5 +18,12 @@ class Oggetto(models.Model):
 	prezzo_attuale=models.FloatField()
 	prezzo_compra_subito=models.FloatField()
 	categoria=models.ForeignKey(Categoria,related_name="oggetti")
-	utente=models.ForeignKey(User,related_name="utente")
+	utente=models.ForeignKey(User,related_name="oggetti")
+	utente_vincente=models.ForeignKey(User,related_name="vincente")
 
+
+
+class Offerta(models.Model):
+	ogetto=models.ForeignKey(Oggetto,related_name="attuale_vincitore")
+	utente=models.ForeignKey(User,related_name="offerte")
+	prezzo_massimo=models.FloatField()
